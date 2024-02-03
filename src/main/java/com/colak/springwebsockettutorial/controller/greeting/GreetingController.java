@@ -1,4 +1,4 @@
-package com.colak.springwebsockettutorial.controller;
+package com.colak.springwebsockettutorial.controller.greeting;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -16,13 +16,12 @@ public class GreetingController {
      * The method creates a GreetingMessage object and returns it.
      * The return value is broadcast to all subscribers of /topic/greetings, as specified in the @SendTo annotation.
      */
-
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     public GreetingMessage greeting(HelloMessage message) throws Exception {
         // Note that the name from the input message is sanitized, since, in this case, it will be echoed back
         // and re-rendered in the browser DOM on the client side.
-        return new GreetingMessage(HtmlUtils.htmlEscape(message.name()) + "!");
+        return new GreetingMessage("Hello " + HtmlUtils.htmlEscape(message.name()) + "!");
     }
 
 }

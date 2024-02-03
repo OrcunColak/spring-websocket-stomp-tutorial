@@ -13,24 +13,26 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        //  Enable a simple memory-based message broker to carry the greeting messages back to the client on destinations
-        //  prefixed with /topic
+        // Enable a simple memory-based message broker
+        // Allows clients to subscribe to and receive messages from the specified destination prefixed with /topic
+        // For example stompClient.subscribe('/topic/greetings',...)
+        // So messages sent to topics starting with /topic will be broadcast to connected clients
         config.enableSimpleBroker("/topic");
 
-        //  It also designates the /app prefix for messages that are bound for methods annotated with @MessageMapping.
-        //  This prefix will be used to define all the message mappings.
-        //  For example, /app/hello is the endpoint that the GreetingController.greeting() method is mapped to handle.
-        // See app.js
+        // Clients can send messages to destinations that start with this prefix.
+        // For example, a client can send a message to /app/hello.
+        // Method needs to be annotated with @MessageMapping("/hello")
+        // For example stompClient.publish({destination: "/app/hello", body: JSON.stringify(...)});
         config.setApplicationDestinationPrefixes("/app");
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        // Register the /gs-guide-websocket endpoint for websocket connections.
-        // See app.js
+        // Register a Stomp (Simple Text Oriented Messaging Protocol) endpoint that clients can connect to.
+        // For example new StompJs.Client({brokerURL: 'ws://localhost:8080/gs-guide-websocket'});
         registry.addEndpoint("/gs-guide-websocket");
-                // This does not work
-                // .withSockJS();
+                //.setAllowedOrigins("http://localhost:8080");
+        // This does not work
+        // .withSockJS();
     }
-
 }
