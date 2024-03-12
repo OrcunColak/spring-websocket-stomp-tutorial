@@ -18,7 +18,6 @@ class GreetingControllerTest {
 
     @Test
     void testGreeting() throws ExecutionException, InterruptedException {
-
         WebSocketClient client = new StandardWebSocketClient();
 
         WebSocketStompClient stompClient = new WebSocketStompClient(client);

@@ -7,8 +7,7 @@ import org.springframework.web.util.HtmlUtils;
 
 @Controller
 public class GreetingController {
-
-
+    // Click to open the index.html
     // http://localhost:8080
 
     /**
@@ -18,7 +17,7 @@ public class GreetingController {
      */
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
-    public GreetingMessage greeting(HelloMessage message) throws Exception {
+    public GreetingMessage greeting(HelloMessage message) {
         // Note that the name from the input message is sanitized, since, in this case, it will be echoed back
         // and re-rendered in the browser DOM on the client side.
         return new GreetingMessage("Hello " + HtmlUtils.htmlEscape(message.name()) + "!");
