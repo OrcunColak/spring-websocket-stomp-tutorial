@@ -1,5 +1,5 @@
 const stompClient = new StompJs.Client({
-    // SstompClient is initialized with brokerURL referring to path /gs-guide-websocket,
+    // StompClient is initialized with brokerURL referring to path /gs-guide-websocket,
     // which is where our websockets server waits for connections.
     brokerURL: 'ws://localhost:8080/gs-guide-websocket'
 });
