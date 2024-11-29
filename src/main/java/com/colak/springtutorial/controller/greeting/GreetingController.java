@@ -1,4 +1,4 @@
-package com.colak.springwebsockettutorial.controller.greeting;
+package com.colak.springtutorial.controller.greeting;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
