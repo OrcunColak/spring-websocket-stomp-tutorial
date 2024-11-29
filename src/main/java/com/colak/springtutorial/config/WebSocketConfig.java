@@ -58,7 +58,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         // For example "new StompJs.Client({brokerURL: 'ws://localhost:8080/gs-guide-websocket'});"
         registry.addEndpoint("/gs-guide-websocket");
         //.setAllowedOrigins("http://localhost:8080");
-        // This does not work
+
+        // This is not necessary because the app.hs is using StompJs.Client() not new SockJS()
         // .withSockJS();
     }
 }
